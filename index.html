@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be-MyDesk — Démos internes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#1a4a35;--g2:#0d2a1e;--g3:#2d6b4e;
+  --cream:#f4f0e8;--sand:#e2dbd0;--black:#0e0e0e;
+  --white:#fff;--border:#d5cfc5;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--black);color:var(--white);min-height:100vh;display:flex;flex-direction:column}
+
+/* ── HEADER ── */
+header{padding:40px 64px 0;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--white);letter-spacing:.06em}
+.badge{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.15);padding:5px 12px}
+
+/* ── HERO ── */
+.hero{padding:64px 64px 48px}
+.hero-eyebrow{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:rgba(255,255,255,.2)}
+.hero-title{font-family:var(--serif);font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.08;letter-spacing:-.01em;margin-bottom:16px}
+.hero-title em{font-style:italic;color:rgba(255,255,255,.4)}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.45);max-width:520px;line-height:1.7}
+
+/* ── GRID ── */
+.grid{padding:0 64px 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;flex:1}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:40px 36px;display:flex;flex-direction:column;gap:20px;text-decoration:none;color:var(--white);position:relative;overflow:hidden;transition:background .25s,border-color .25s}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,74,53,.3),transparent);opacity:0;transition:opacity .3s}
+.card:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+.card:hover::before{opacity:1}
+.card-num{font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.2);font-family:var(--serif)}
+.card-icon{font-size:36px;margin-bottom:4px}
+.card-title{font-family:var(--serif);font-size:28px;font-weight:300;line-height:1.15}
+.card-desc{font-size:12px;color:rgba(255,255,255,.45);line-height:1.7;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tag{font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.4);transition:border-color .2s,color .2s}
+.card:hover .tag{border-color:rgba(26,180,100,.3);color:rgba(26,180,100,.7)}
+.card-cta{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--g3);border-bottom:1px solid var(--g3);padding-bottom:2px;align-self:flex-start;transition:gap .2s,color .2s}
+.card:hover .card-cta{gap:14px;color:#6bc49e;border-color:#6bc49e}
+/* Featured card */
+.card.featured{background:var(--g2);border-color:rgba(26,74,53,.6)}
+.card.featured::before{background:linear-gradient(135deg,rgba(26,100,60,.5),transparent)}
+.card.featured:hover{background:#0f3525}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:rgba(255,255,255,.06);margin:0 64px}
+
+/* ── FOOTER ── */
+footer{padding:28px 64px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.06)}
+.ft-left{font-size:11px;color:rgba(255,255,255,.2)}
+.ft-right{font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ── HOVER PREVIEW ── */
+.card-preview{position:absolute;bottom:100%;left:0;right:0;height:180px;overflow:hidden;opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover .card-preview{opacity:1}
+.preview-bar{height:4px;width:100%}
+.preview-1{background:linear-gradient(90deg,#007B83,#00a896)}
+.preview-2{background:linear-gradient(90deg,#1a4a35,#2d6b4e)}
+.preview-3{background:linear-gradient(90deg,#0d2a1e,#1a4a35)}
+
+@media(max-width:900px){
+  header,.hero,.grid,footer{padding-left:24px;padding-right:24px}
+  .grid{grid-template-columns:1fr}
+  .hero{padding-top:40px;padding-bottom:32px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Be-MyDesk</div>
+  <div class="badge">Démos internes · 2026</div>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">Prototypes & démonstrations</div>
+  <h1 class="hero-title">Nos démos<br><em>cliquables</em></h1>
+  <p class="hero-sub">Trois expériences conçues pour présenter Be-MyDesk à nos équipes et partenaires. Cliquez sur une démo pour l'ouvrir.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="grid">
+
+  <!-- DEMO 1 -->
+  <a href="BMD_Demo_1.html" class="card" target="_blank">
+    <div class="card-num">01 —</div>
+    <div class="card-icon">🖥️</div>
+    <div class="card-title">Design<br>Prototype</div>
+    <div class="card-desc">Démo de design de site — navigation cliquable avec présentation des catégories produits, des espaces et des calls-to-action.</div>
+    <div class="card-tags">
+      <span class="tag">UI / UX</span>
+      <span class="tag">Navigation</span>
+      <span class="tag">Produits</span>
+    </div>
+    <div class="card-cta">Ouvrir la démo →</div>
+  </a>
+
+  <!-- DEMO 2 -->
+  <a href="BMD_Demo_2.html" class="card featured" target="_blank">
+    <div class="card-num">02 —</div>
+    <div class="card-icon">🪑</div>
+    <div class="card-title">Site Mobilier<br>& Aménagement</div>
+    <div class="card-desc">Expérience complète : hero vidéo, mega menus produits / toolbox / espaces, section éditoriale, popup 3 panneaux avec configurateur IA.</div>
+    <div class="card-tags">
+      <span class="tag">Vidéo hero</span>
+      <span class="tag">Mega menu</span>
+      <span class="tag">Popup IA</span>
+      <span class="tag">Complet</span>
+    </div>
+    <div class="card-cta">Ouvrir la démo →</div>
+  </a>
+
+  <!-- DEMO 3 -->
+  <a href="BMD_Demo_3.html" class="card" target="_blank">
+    <div class="card-num">03 —</div>
+    <div class="card-icon">✨</div>
+    <div class="card-title">Visite 3D<br>Interactive</div>
+    <div class="card-desc">Loader animé + scène Three.js en 3D : scroll molette pour avancer de pièce en pièce, spotlight sur chaque produit (Tiramisu, K110, Puzzle), plan d'aménagement en fin de parcours.</div>
+    <div class="card-tags">
+      <span class="tag">Three.js</span>
+      <span class="tag">Scroll 3D</span>
+      <span class="tag">Produits réels</span>
+      <span class="tag">Plan</span>
+    </div>
+    <div class="card-cta">Ouvrir la démo →</div>
+  </a>
+
+</div>
+
+<footer>
+  <div class="ft-left">Be-MyDesk · Usage interne uniquement</div>
+  <div class="ft-right">Mai 2026</div>
+</footer>
+
+</body>
+</html>

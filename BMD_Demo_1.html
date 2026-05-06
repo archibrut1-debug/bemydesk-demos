@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeMyDesk — Design 1 · Prototype</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#E5E7EB;display:flex;justify-content:center;padding:24px 16px;min-height:100vh;}
+.browser{width:100%;max-width:960px;border-radius:10px;overflow:hidden;border:1px solid #D1D5DB;box-shadow:0 4px 24px rgba(0,0,0,.12);}
+.chrome{background:#F3F4F6;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #D1D5DB;}
+.dot{width:12px;height:12px;border-radius:50%;}
+.url{flex:1;background:#fff;border:1px solid #D1D5DB;border-radius:20px;padding:4px 14px;font-size:12px;color:#6B7280;text-align:center;}
+.screen{display:none;}.screen.on{display:block;}
+.site{background:#F5F6F7;}
+
+/* ── HEADER LEVEL 1 ── */
+.h-top{background:#007B83;padding:7px 24px;display:flex;align-items:center;justify-content:space-between;}
+.h-top-l{font-size:11px;font-weight:700;color:#fff;letter-spacing:.5px;text-transform:uppercase;}
+.h-top-r{font-size:12px;font-weight:700;color:#fff;letter-spacing:.5px;}
+
+/* ── HEADER LEVEL 2 ── */
+.h-mid{background:#fff;border-bottom:1px solid #E5E7EB;padding:12px 24px;display:flex;align-items:center;gap:16px;}
+.logo{display:flex;align-items:center;gap:6px;flex-shrink:0;text-decoration:none;}
+.logo-box{border:2.5px solid #1B2A4A;padding:4px 8px;font-size:15px;font-weight:900;color:#1B2A4A;letter-spacing:-.5px;}
+.logo-txt{font-size:12px;font-weight:700;color:#1B2A4A;line-height:1.2;}
+.logo-sub{font-size:9px;font-weight:400;color:#9CA3AF;letter-spacing:.6px;display:block;}
+.search-wrap{flex:1;max-width:340px;display:flex;align-items:center;border:2px solid #007B83;border-radius:5px;overflow:hidden;}
+.search-tag{background:#007B83;padding:8px 10px;font-size:10px;font-weight:800;color:#fff;letter-spacing:.4px;white-space:nowrap;flex-shrink:0;}
+.search-wrap input{flex:1;border:none;padding:8px 10px;font-size:11px;color:#374151;outline:none;background:#fff;min-width:0;}
+.search-wrap input::placeholder{color:#9CA3AF;}
+.search-btn{background:#1B2A4A;border:none;padding:8px 12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.icons{display:flex;align-items:center;margin-left:auto;}
+.icon-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 16px;border-right:1px solid #E5E7EB;cursor:pointer;}
+.icon-item:last-child{border-right:none;}
+.icon-item svg{width:20px;height:20px;stroke:#1B2A4A;fill:none;stroke-width:1.8;}
+.icon-lbl{font-size:9px;font-weight:700;color:#1B2A4A;text-transform:uppercase;letter-spacing:.3px;text-align:center;line-height:1.2;}
+.icon-sub{font-size:8px;color:#007B83;font-weight:700;text-transform:uppercase;}
+
+/* ── HEADER LEVEL 3 ── */
+.h-nav{background:#1B2A4A;padding:0 16px;display:flex;align-items:stretch;overflow-x:auto;}
+.h-nav a{font-size:10px;font-weight:700;color:rgba(255,255,255,.85);text-decoration:none;letter-spacing:.3px;text-transform:uppercase;padding:11px 12px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.1);display:flex;align-items:center;}
+.h-nav a:last-child{border-right:none;color:#F0C060;}
+.h-nav a:hover{background:rgba(255,255,255,.1);}
+
+/* ── HERO ── */
+.hero{background:#fff;text-align:center;padding:28px 32px 20px;}
+.hero h1{font-size:24px;font-weight:800;color:#1B2A4A;letter-spacing:-.4px;line-height:1.3;}
+.hero h1 span{color:#007B83;}
+
+/* ── 2 BLOCKS ── */
+.blocks{display:grid;grid-template-columns:1fr 1fr;margin:14px 20px 20px;}
+.bl{background:#fff;border:1px solid #E5E7EB;border-radius:8px 0 0 8px;padding:22px 20px;}
+.bl h2{font-size:17px;font-weight:800;color:#007B83;margin:0 0 14px;}
+.chk{display:flex;align-items:center;gap:10px;margin:7px 0;cursor:pointer;}
+.chk input{accent-color:#007B83;width:15px;height:15px;flex-shrink:0;cursor:pointer;}
+.chk label{font-size:13px;color:#374151;cursor:pointer;display:flex;align-items:center;gap:7px;}
+.chk-ico{font-size:15px;width:20px;text-align:center;}
+.btn-l{display:block;margin-top:18px;background:#007B83;color:#fff;text-align:center;padding:13px;border-radius:5px;font-size:13px;font-weight:800;letter-spacing:.4px;cursor:pointer;border:none;width:100%;transition:background .15s;}
+.btn-l:hover{background:#006670;}
+
+/* ── RIGHT BLOCK ── */
+.br{background:#1B2A4A;border-radius:0 8px 8px 0;padding:22px 20px;}
+.br h2{font-size:15px;font-weight:700;color:#fff;line-height:1.4;margin:0 0 14px;}
+.f-row{margin-bottom:9px;}
+.f-input,.f-select{width:100%;background:#fff;border:1px solid #D1D5DB;border-radius:5px;padding:9px 12px;font-size:12px;color:#374151;outline:none;appearance:none;}
+.f-input::placeholder{color:#9CA3AF;}
+.f-select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;}
+.btn-r{display:block;margin-top:12px;background:#007B83;color:#fff;text-align:center;padding:13px;border-radius:5px;font-size:13px;font-weight:800;letter-spacing:.4px;cursor:pointer;border:none;width:100%;transition:background .15s;}
+.btn-r:hover{background:#006670;}
+.agent-strip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:5px;padding:10px 12px;margin-top:10px;display:flex;align-items:center;gap:10px;}
+.agent-av{width:32px;height:32px;border-radius:50%;background:#007B83;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;flex-shrink:0;}
+.agent-txt{font-size:11px;color:rgba(255,255,255,.8);line-height:1.5;}
+.agent-name{font-weight:700;color:#fff;}
+
+/* ── BACK BUTTON ── */
+.back-btn{display:inline-flex;align-items:center;gap:5px;background:#1B2A4A;color:#fff;border:none;border-radius:4px;padding:8px 16px;font-size:11px;font-weight:800;cursor:pointer;transition:background .15s;}
+.back-btn:hover{background:#2d4270;}
+
+/* ── ASK & GET ── */
+.ag-hero{background:#1B2A4A;padding:28px 24px;text-align:center;}
+.ag-hero h1{font-size:20px;font-weight:800;color:#fff;margin:0 0 6px;}
+.ag-hero p{font-size:12px;color:rgba(255,255,255,.65);margin:0 0 16px;}
+.ag-row{display:flex;gap:8px;max-width:560px;margin:0 auto;}
+.ag-inp{flex:1;background:#fff;border:none;border-radius:5px;padding:11px 14px;font-size:12px;color:#1B2A4A;outline:none;}
+.ag-inp::placeholder{color:#9CA3AF;}
+.ag-go{background:#007B83;color:#fff;border:none;border-radius:5px;padding:11px 18px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;transition:background .15s;}
+.ag-go:hover{background:#006670;}
+.ag-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px;}
+.ag-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85);font-size:11px;padding:4px 12px;border-radius:20px;cursor:pointer;transition:background .15s;}
+.ag-tag:hover{background:rgba(255,255,255,.2);}
+.ag-results{padding:16px 20px;}
+.ag-results-hdr{font-size:12px;color:#6B7280;margin:0 0 12px;}
+.ag-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.ag-card{background:#fff;border:1px solid #E5E7EB;border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .15s;}
+.ag-card:hover{border-color:#007B83;}
+.ag-card-img{height:90px;background:#E8F4F5;display:flex;align-items:center;justify-content:center;font-size:32px;}
+.ag-card-body{padding:10px 12px;}
+.ag-cat{font-size:9px;color:#007B83;font-weight:800;letter-spacing:.5px;text-transform:uppercase;}
+.ag-name{font-size:12px;font-weight:700;color:#1B2A4A;margin:3px 0;}
+.ag-loa{font-size:13px;font-weight:800;color:#007B83;}
+.ag-ht{font-size:10px;color:#9CA3AF;margin:1px 0;}
+.ag-stk{font-size:9px;background:#FEF3C7;color:#92400E;padding:2px 6px;border-radius:3px;display:inline-block;margin-top:4px;}
+.ag-match{font-size:9px;background:#DCFCE7;color:#166534;padding:2px 6px;border-radius:3px;display:block;margin-top:4px;}
+.ag-contact{background:#1B2A4A;margin:0 20px 20px;border-radius:8px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;}
+.ag-contact-txt{color:#fff;font-size:13px;font-weight:700;}
+.ag-contact-sub{color:rgba(255,255,255,.6);font-size:11px;}
+.ag-contact-btn{background:#007B83;color:#fff;border:none;border-radius:5px;padding:10px 18px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;}
+.ag-empty{padding:48px;text-align:center;color:#9CA3AF;font-size:13px;}
+
+/* ── PRODUCT PAGE ── */
+.prod-layout{display:grid;grid-template-columns:1fr 1fr;background:#fff;}
+.prod-img{height:260px;background:#E8F4F5;display:flex;align-items:center;justify-content:center;font-size:72px;}
+.prod-info{padding:22px 18px;}
+.prod-cat-lbl{font-size:10px;color:#007B83;font-weight:800;text-transform:uppercase;letter-spacing:.5px;}
+.prod-name{font-size:20px;font-weight:800;color:#1B2A4A;margin:4px 0 12px;line-height:1.2;}
+.loa-box{background:#E8F5F5;border:1px solid #007B83;border-radius:6px;padding:12px;margin:0 0 10px;}
+.loa-lbl{font-size:9px;color:#007B83;font-weight:800;text-transform:uppercase;letter-spacing:.3px;}
+.loa-val{font-size:22px;font-weight:800;color:#1B2A4A;line-height:1.2;}
+.loa-sub{font-size:10px;color:#6B7280;}
+.prod-ht{font-size:12px;color:#9CA3AF;margin:3px 0 12px;}
+.stock-alert{background:#FEF3C7;border:1px solid #F59E0B;border-radius:4px;padding:7px 12px;font-size:11px;color:#92400E;margin:0 0 14px;display:flex;align-items:center;gap:6px;}
+.btn-main{background:#007B83;color:#fff;border:none;border-radius:5px;padding:14px;width:100%;font-size:13px;font-weight:800;cursor:pointer;margin-bottom:8px;transition:background .15s;}
+.btn-main:hover{background:#006670;}
+.btn-sec{background:#fff;color:#1B2A4A;border:1.5px solid #1B2A4A;border-radius:5px;padding:12px;width:100%;font-size:12px;font-weight:700;cursor:pointer;transition:background .15s;}
+.btn-sec:hover{background:#F9FAFB;}
+.prod-com{background:#F9FAFB;border-top:1px solid #E5E7EB;padding:14px 18px;grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;}
+.com-info{display:flex;align-items:center;gap:12px;}
+.com-av{width:40px;height:40px;border-radius:50%;background:#1B2A4A;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;}
+.com-name{font-size:13px;font-weight:700;color:#1B2A4A;}
+.com-sub{font-size:10px;color:#6B7280;}
+.com-btn{background:#1B2A4A;color:#fff;border:none;border-radius:5px;padding:10px 18px;font-size:12px;font-weight:800;cursor:pointer;transition:background .15s;}
+.com-btn:hover{background:#2d4270;}
+</style>
+</head>
+<body>
+
+<div class="browser">
+  <div class="chrome">
+    <div class="dot" style="background:#FF5F57;"></div>
+    <div class="dot" style="background:#FFBD2E;"></div>
+    <div class="dot" style="background:#28CA41;"></div>
+    <div class="url">be-mydesk.com — Design 1 · Prototype interactif</div>
+  </div>
+
+  <!-- ════════════════ HOMEPAGE ════════════════ -->
+  <div class="screen on site" id="s-home">
+    <div class="h-top" style="justify-content:center;">
+      <div class="h-top-l" style="font-size:12px;letter-spacing:.6px;">📍 Venez visiter notre Showroom à Levallois</div>
+    </div>
+    <div class="h-mid">
+      <a class="logo" href="#">
+        <div class="logo-box">BE</div>
+        <div class="logo-txt">MY DESK<span class="logo-sub">WORKING SPACES</span></div>
+      </a>
+      <div class="search-wrap">
+        <div class="search-tag">IA</div>
+        <input placeholder="Décrivez votre besoin, je trouve les produits" onkeydown="if(event.key==='Enter'){document.getElementById('ag-q').value=this.value;sw('ai');doSearch();}">
+        <button class="search-btn" onclick="sw('ai')">
+          <svg style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2;" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        </button>
+      </div>
+      <div class="icons">
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.08 5.18 2 2 0 015 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.92z"/></svg>
+          <div class="icon-lbl">01 XX XX<br>XX XX</div>
+        </div>
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div class="icon-lbl">Contact</div>
+        </div>
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <div class="icon-lbl">Devis par mail</div>
+          <div class="icon-sub">En 1H</div>
+        </div>
+      </div>
+    </div>
+    <div class="h-nav">
+      <a href="#">Bureaux &amp; Tables</a>
+      <a href="#">Fauteuil &amp; Chaise</a>
+      <a href="#">Rangements</a>
+      <a href="#">Mobilier &amp; Cabines acoustiques</a>
+      <a href="#">Accessoires bureau</a>
+      <a href="#">Espace de travail</a>
+      <a href="#">Nos Showrooms</a>
+    </div>
+    <div class="hero">
+      <h1>L'ameublement de bureau :<br><span>Simple. Design. Abordable.</span> C'est tout.</h1>
+    </div>
+    <div class="blocks">
+      <div class="bl">
+        <h2>Je cherche...</h2>
+        <div class="chk"><input type="checkbox" id="c1"><label for="c1"><span class="chk-ico">🖥</span> Travailler</label></div>
+        <div class="chk"><input type="checkbox" id="c2"><label for="c2"><span class="chk-ico">👥</span> Collaborer</label></div>
+        <div class="chk"><input type="checkbox" id="c3"><label for="c3"><span class="chk-ico">🔇</span> M'isoler / Acoustique</label></div>
+        <div class="chk"><input type="checkbox" id="c4"><label for="c4"><span class="chk-ico">🤝</span> Accueillir</label></div>
+        <div class="chk"><input type="checkbox" id="c5"><label for="c5"><span class="chk-ico">💡</span> Apprendre</label></div>
+        <div class="chk"><input type="checkbox" id="c6"><label for="c6"><span class="chk-ico">📦</span> Stocker</label></div>
+        <button class="btn-l" onclick="sw('ai')">VOIR LES PRODUITS ASSOCIÉS →</button>
+      </div>
+      <div class="br">
+        <h2>J'ai un projet d'aménagement,<br>je veux parler à un humain</h2>
+        <div class="f-row">
+          <select class="f-select"><option value="" disabled selected>Titre</option><option>M.</option><option>Mme</option></select>
+        </div>
+        <div class="f-row"><input class="f-input" placeholder="Nom &amp; Prénom" type="text"></div>
+        <div class="f-row"><input class="f-input" placeholder="Société" type="text"></div>
+        <div class="f-row"><input class="f-input" placeholder="N° de téléphone" type="tel"></div>
+        <div class="f-row">
+          <select class="f-select"><option value="" disabled selected>J'ai un projet de travaux / mobilier</option><option>Mobilier uniquement</option><option>Travaux + mobilier</option><option>Aménagement complet</option></select>
+        </div>
+        <button class="btn-r">ÊTRE RAPPELÉ RAPIDEMENT</button>
+        <div class="agent-strip">
+          <div class="agent-av">M</div>
+          <div class="agent-txt"><span class="agent-name">Malick</span> — Conseiller dédié<br>Rappel sous <strong style="color:#fff;">4H</strong> garanti</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ ASK & GET ════════════════ -->
+  <div class="screen site" id="s-ai">
+    <div class="h-top" style="justify-content:center;"><div class="h-top-l" style="font-size:12px;letter-spacing:.6px;">📍 Venez visiter notre Showroom à Levallois</div></div>
+    <div class="h-mid" style="padding:10px 24px;">
+      <a class="logo" href="#"><div class="logo-box">BE</div><div class="logo-txt">MY DESK</div></a>
+      <div style="margin-left:auto;"><button class="back-btn" onclick="sw('home')">← Accueil</button></div>
+    </div>
+    <div class="h-nav">
+      <a href="#">Bureaux &amp; Tables</a><a href="#">Fauteuil &amp; Chaise</a><a href="#">Rangements</a><a href="#">Mobilier &amp; Cabines acoustiques</a><a href="#">Accessoires bureau</a><a href="#">Nos Showrooms</a>
+    </div>
+    <div class="ag-hero">
+      <h1>Décrivez votre projet, on trouve vos solutions.</h1>
+      <p>Tapez votre besoin en langage naturel — postes, usage, surface, budget</p>
+      <div class="ag-row">
+        <input class="ag-inp" id="ag-q" placeholder="Ex : 10 postes open space 80m², besoin d'isolation acoustique" onkeydown="if(event.key==='Enter')doSearch()">
+        <button class="ag-go" onclick="doSearch()">Chercher →</button>
+      </div>
+      <div class="ag-tags">
+        <span class="ag-tag" onclick="qs(this)">Cabine acoustique solo</span>
+        <span class="ag-tag" onclick="qs(this)">5 postes modulables</span>
+        <span class="ag-tag" onclick="qs(this)">Salle de réunion 6P</span>
+        <span class="ag-tag" onclick="qs(this)">Pack onboarding 15 postes</span>
+      </div>
+    </div>
+    <div id="ag-out" style="display:none;">
+      <div class="ag-results">
+        <p class="ag-results-hdr" id="ag-lbl"></p>
+        <div class="ag-cards">
+          <div class="ag-card" onclick="sw('prod')">
+            <div class="ag-card-img">🔇</div>
+            <div class="ag-card-body">
+              <div class="ag-cat">Architecture Nomade</div>
+              <div class="ag-name">Archipod S — Solo</div>
+              <div class="ag-loa">dès 89 €/mois</div>
+              <div class="ag-ht">3 200 € HT · LOA 36 mois</div>
+              <div class="ag-stk">Plus que 2 en stock</div>
+              <div class="ag-match">Correspond à votre usage</div>
+            </div>
+          </div>
+          <div class="ag-card" onclick="sw('prod')">
+            <div class="ag-card-img" style="background:#F0F4F8;">📐</div>
+            <div class="ag-card-body">
+              <div class="ag-cat">Bureau-Branding</div>
+              <div class="ag-name">Pack 10 Postes Premium</div>
+              <div class="ag-loa">dès 420 €/mois</div>
+              <div class="ag-ht">14 800 € HT · LOA 36 mois</div>
+              <div class="ag-match">Correspond à votre usage</div>
+            </div>
+          </div>
+          <div class="ag-card" onclick="sw('prod')">
+            <div class="ag-card-img" style="background:#F5F0F8;">🏠</div>
+            <div class="ag-card-body">
+              <div class="ag-cat">Architecture Nomade</div>
+              <div class="ag-name">Archipod M — Réunion 4P</div>
+              <div class="ag-loa">dès 210 €/mois</div>
+              <div class="ag-ht">7 600 € HT · LOA 36 mois</div>
+              <div class="ag-stk">Plus que 1 en stock</div>
+              <div class="ag-match">Correspond à votre usage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ag-contact">
+        <div><div class="ag-contact-txt">Ces produits correspondent à votre projet ?</div><div class="ag-contact-sub">Malick vous rappelle sous 4H pour affiner votre devis</div></div>
+        <button class="ag-contact-btn">Parler à Malick →</button>
+      </div>
+    </div>
+    <div id="ag-empty" class="ag-empty">Décrivez votre projet ci-dessus pour voir les solutions adaptées</div>
+  </div>
+
+  <!-- ════════════════ FICHE PRODUIT ════════════════ -->
+  <div class="screen site" id="s-prod">
+    <div class="h-top" style="justify-content:center;"><div class="h-top-l" style="font-size:12px;letter-spacing:.6px;">📍 Venez visiter notre Showroom à Levallois</div></div>
+    <div class="h-mid" style="padding:10px 24px;">
+      <a class="logo" href="#"><div class="logo-box">BE</div><div class="logo-txt">MY DESK</div></a>
+      <div style="margin-left:auto;"><button class="back-btn" onclick="sw('ai')">← Résultats</button></div>
+    </div>
+    <div class="h-nav">
+      <a href="#">Bureaux &amp; Tables</a><a href="#">Fauteuil &amp; Chaise</a><a href="#">Rangements</a><a href="#">Mobilier &amp; Cabines acoustiques</a><a href="#">Accessoires bureau</a><a href="#">Nos Showrooms</a>
+    </div>
+    <div class="prod-layout">
+      <div class="prod-img">🔇</div>
+      <div class="prod-info">
+        <div class="prod-cat-lbl">Architecture Nomade · Cabine Acoustique</div>
+        <div class="prod-name">Archipod S — Solo</div>
+        <div class="loa-box">
+          <div class="loa-lbl">À partir de</div>
+          <div class="loa-val">89 €/mois</div>
+          <div class="loa-sub">en LOA 36 mois, option d'achat en fin de contrat</div>
+        </div>
+        <div class="prod-ht">ou 3 200 € HT prix direct</div>
+        <div class="stock-alert">⚡ Plus que 2 unités disponibles · Stock suivant : 3 semaines</div>
+        <button class="btn-main">Demander un devis gratuit</button>
+        <button class="btn-sec">Voir au showroom Levallois</button>
+      </div>
+      <div class="prod-com">
+        <div class="com-info">
+          <div class="com-av">M</div>
+          <div>
+            <div class="com-name">Malick — Conseiller BMD</div>
+            <div class="com-sub">Rappel sous 4H · Interlocuteur dédié · 06 XX XX XX XX</div>
+          </div>
+        </div>
+        <button class="com-btn">📞 Être rappelé</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function sw(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById('s-'+id).classList.add('on');
+  window.scrollTo(0,0);
+}
+function qs(el){
+  document.getElementById('ag-q').value=el.textContent;
+  doSearch();
+}
+function doSearch(){
+  const q=document.getElementById('ag-q').value.trim();
+  if(!q)return;
+  document.getElementById('ag-empty').style.display='none';
+  document.getElementById('ag-out').style.display='block';
+  document.getElementById('ag-lbl').innerHTML='<b>3 solutions</b> trouvées pour : "'+q+'"';
+}
+</script>
+</body>
+</html>
