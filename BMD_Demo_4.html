@@ -26,7 +26,41 @@ body{font-family:var(--sans);background:var(--cream);color:var(--choco);overflow
 body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:56px;height:56px;border-color:var(--gold)}
 body:has(a:hover) #cur-dot{background:var(--gold);width:5px;height:5px}
 
-/* NAV */
+/* MEGA MENU */
+.mega-overlay{display:none;position:fixed;top:66px;left:0;right:0;bottom:0;background:rgba(44,26,14,.25);z-index:999}
+.mega-overlay.open{display:block}
+.mega-menu{position:fixed;top:66px;left:0;right:0;z-index:1001;background:var(--cream);border-bottom:2px solid var(--beige2);padding:40px 56px;display:none;opacity:0;transform:translateY(-6px);transition:opacity .2s,transform .2s;max-height:calc(100vh - 66px);overflow-y:auto;box-shadow:0 12px 40px rgba(44,26,14,.12)}
+.mega-menu.open{display:block;opacity:1;transform:translateY(0)}
+.mm-grid{display:grid;grid-template-columns:260px 1fr;gap:36px}
+.mm-feat{background:var(--choco);padding:28px;color:var(--beige);display:flex;flex-direction:column;justify-content:space-between;min-height:220px}
+.mm-feat h3{font-family:var(--serif);font-size:22px;line-height:1.2;font-weight:400}
+.mm-feat p{font-size:12px;opacity:.6;line-height:1.6;margin-top:10px}
+.mm-feat a{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--beige);text-decoration:none;border:1px solid rgba(245,237,224,.25);padding:8px 14px;transition:background .2s;width:fit-content}
+.mm-feat a:hover{background:rgba(245,237,224,.1)}
+.mm-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.mm-cat{padding:18px 16px;background:var(--beige);text-decoration:none;color:var(--choco);transition:background .2s;display:flex;flex-direction:column;gap:7px;border:1px solid transparent}
+.mm-cat:hover{background:var(--beige2);border-color:var(--beige3)}
+.mm-cat-icon{font-size:22px}
+.mm-cat-name{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--choco)}
+.mm-cat-n{font-size:10px;color:rgba(44,26,14,.4)}
+/* DB menu */
+.mm-db{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.mm-db-item{padding:24px 20px;background:var(--beige);text-decoration:none;color:var(--choco);transition:background .2s;display:flex;flex-direction:column;gap:10px;border:1px solid transparent}
+.mm-db-item:hover{background:var(--beige2);border-color:var(--beige3)}
+.mm-db-icon{font-size:26px}
+.mm-db-name{font-family:var(--serif);font-size:17px;font-weight:400}
+.mm-db-desc{font-size:11px;color:rgba(44,26,14,.45);line-height:1.55}
+/* Showroom menu */
+.mm-showroom{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.mm-showroom-item{padding:28px 24px;background:var(--beige);text-decoration:none;color:var(--choco);transition:background .2s;display:flex;flex-direction:column;gap:10px}
+.mm-showroom-item:hover{background:var(--beige2)}
+.mm-showroom-icon{font-size:28px}
+.mm-showroom-name{font-family:var(--serif);font-size:20px;font-weight:400}
+.mm-showroom-desc{font-size:12px;color:rgba(44,26,14,.45);line-height:1.6}
+.mm-showroom-addr{font-size:11px;color:var(--gold);margin-top:4px}
+/* Nav links hover style */
+.nav-link-item{cursor:pointer;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(44,26,14,.5);transition:color .2s;list-style:none}
+.nav-link-item:hover,.nav-link-item.active{color:var(--choco)}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 56px;height:66px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,246,240,0);backdrop-filter:blur(0);transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid transparent}
 nav.scrolled{background:rgba(250,246,240,.96);backdrop-filter:blur(16px);border-bottom-color:rgba(44,26,14,.08)}
 .nav-logo{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--choco);text-decoration:none;letter-spacing:.04em}
@@ -38,6 +72,39 @@ nav.scrolled{background:rgba(250,246,240,.96);backdrop-filter:blur(16px);border-
 .nav-phone{font-size:12px;color:rgba(44,26,14,.4);display:flex;align-items:center;gap:7px}
 .nav-cta{padding:10px 22px;background:var(--choco);color:var(--beige);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .2s}
 .nav-cta:hover{background:var(--choco3)}
+.nav-icons{display:flex;align-items:center;gap:4px}
+.nav-icon-btn{position:relative;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(44,26,14,.12);color:rgba(44,26,14,.5);text-decoration:none;transition:color .2s,border-color .2s,background .2s}
+.nav-icon-btn:hover{color:var(--choco);border-color:var(--choco);background:var(--beige)}
+.nav-icon-badge{position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--gold);color:var(--choco);font-size:8px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1}
+
+/* ══ SHOWROOM ══ */
+#showroom{padding:100px 56px;background:var(--beige2)}
+.sw-header{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:52px}
+.sw-headline{font-family:var(--serif);font-size:clamp(26px,3.5vw,44px);font-weight:400;line-height:1.1;color:var(--choco)}
+.sw-headline em{font-style:italic;color:var(--choco3)}
+.sw-sub{font-size:14px;color:rgba(44,26,14,.5);line-height:1.8;max-width:420px}
+.sw-cta-inline{display:inline-flex;align-items:center;gap:10px;margin-top:24px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--choco);text-decoration:none;border-bottom:1px solid rgba(44,26,14,.3);padding-bottom:3px;transition:gap .2s}
+.sw-cta-inline:hover{gap:16px}
+/* Grille photos */
+.sw-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:3px}
+.sw-main{grid-row:1/3;position:relative;overflow:hidden;min-height:460px}
+.sw-side{position:relative;overflow:hidden;min-height:220px}
+.sw-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .7s cubic-bezier(.4,0,.2,1);filter:brightness(.85)}
+.sw-main:hover .sw-img,.sw-side:hover .sw-img{transform:scale(1.04);filter:brightness(.7)}
+.sw-label{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(44,26,14,.85) 0%,transparent 100%)}
+.sw-label-tag{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:5px}
+.sw-label-name{font-family:var(--serif);font-size:16px;color:var(--white);margin-bottom:3px}
+.sw-label-sub{font-size:10px;color:rgba(245,237,224,.45)}
+/* Cards info showroom */
+.sw-info{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:3px}
+.sw-card{padding:28px;border:1px solid var(--beige3);display:flex;flex-direction:column;gap:10px;background:var(--cream)}
+.sw-card:hover{background:var(--beige)}
+.sw-card-icon{font-size:24px}
+.sw-card-title{font-family:var(--serif);font-size:18px;color:var(--choco)}
+.sw-card-desc{font-size:12px;color:rgba(44,26,14,.45);line-height:1.6;flex:1}
+.sw-card-detail{font-size:11px;color:var(--gold);font-weight:500}
+.sw-card-link{display:inline-flex;align-items:center;gap:7px;margin-top:4px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--choco);text-decoration:none;border-bottom:1px solid rgba(44,26,14,.2);padding-bottom:2px;transition:gap .2s,border-color .2s;width:fit-content}
+.sw-card-link:hover{gap:12px;border-color:var(--choco)}
 
 /* ══ HERO ══ */
 #hero{min-height:100vh;display:grid;grid-template-columns:2fr 1fr;gap:3px;background:var(--beige2);padding-top:66px}
@@ -50,20 +117,16 @@ nav.scrolled{background:rgba(250,246,240,.96);backdrop-filter:blur(16px);border-
 .hero-main:hover .hero-main-overlay{background:linear-gradient(to top,rgba(44,26,14,.95) 0%,rgba(44,26,14,.45) 65%,rgba(44,26,14,.05) 100%)}
 
 /* Info principale bas gauche */
-.hero-main-info{position:absolute;bottom:0;left:0;right:0;padding:44px 48px;transform:translateY(6px);transition:transform .4s cubic-bezier(.4,0,.2,1)}
-.hero-main:hover .hero-main-info{transform:translateY(0)}
-.hero-cat{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold2);margin-bottom:12px;opacity:0;transform:translateY(6px);transition:opacity .3s .1s,transform .3s .1s}
-.hero-main:hover .hero-cat{opacity:1;transform:translateY(0)}
+.hero-main-info{position:absolute;bottom:0;left:0;right:0;padding:44px 48px;}
+.hero-cat{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold2);margin-bottom:12px;}
 .hero-name{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:400;color:var(--white);line-height:1.05;margin-bottom:6px}
-.hero-range{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.08em;margin-bottom:24px}
-.hero-bubble{display:inline-flex;flex-direction:column;gap:4px;background:rgba(184,134,74,.15);border:1px solid rgba(184,134,74,.35);backdrop-filter:blur(12px);padding:14px 20px;opacity:0;transform:translateY(10px);transition:opacity .35s .15s,transform .35s .15s}
-.hero-main:hover .hero-bubble{opacity:1;transform:translateY(0)}
-.bubble-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-.bubble-price{font-family:var(--serif);font-size:22px;color:var(--gold2);font-style:italic}
-.bubble-ht{font-size:9px;color:rgba(255,255,255,.3)}
-.hero-cta{display:inline-flex;align-items:center;gap:10px;margin-top:16px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);border-bottom:1px solid rgba(184,134,74,.4);padding-bottom:3px;text-decoration:none;opacity:0;transform:translateY(8px);transition:opacity .35s .2s,transform .35s .2s,gap .2s}
-.hero-main:hover .hero-cta{opacity:1;transform:translateY(0)}
-.hero-cta:hover{gap:16px;border-color:var(--gold2)}
+.hero-range{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.08em;margin-bottom:16px}
+.hero-bubble{display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(250,246,240,.93);backdrop-filter:blur(10px);padding:12px 18px;border-top:2px solid var(--gold)}
+.bubble-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(44,26,14,.5)}
+.bubble-price{font-family:var(--serif);font-size:20px;color:var(--choco);font-style:italic}
+.bubble-ht{font-size:9px;color:rgba(44,26,14,.4);margin-left:2px}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--beige);background:var(--choco);padding:9px 16px;text-decoration:none;transition:background .2s,gap .2s;white-space:nowrap;flex-shrink:0}
+.hero-cta:hover{background:var(--choco3);gap:12px}
 
 /* Badge top-left */
 .hero-badge{position:absolute;top:32px;left:48px;z-index:2;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);padding:7px 14px;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);background:rgba(44,26,14,.1)}
@@ -75,16 +138,12 @@ nav.scrolled{background:rgba(250,246,240,.96);backdrop-filter:blur(16px);border-
 .hero-sub:hover img{transform:scale(1.05);filter:brightness(.65)}
 .hero-sub-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,14,.85) 0%,transparent 60%);transition:background .4s}
 .hero-sub:hover .hero-sub-overlay{background:linear-gradient(to top,rgba(44,26,14,.92) 0%,rgba(44,26,14,.3) 60%,transparent 100%)}
-.hero-sub-info{position:absolute;bottom:0;left:0;right:0;padding:22px 24px;transform:translateY(4px);transition:transform .35s}
-.hero-sub:hover .hero-sub-info{transform:translateY(0)}
-.sub-cat{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px;opacity:0;transition:opacity .3s .1s}
-.hero-sub:hover .sub-cat{opacity:1}
-.sub-name{font-family:var(--serif);font-size:18px;color:var(--white);line-height:1.1;margin-bottom:3px}
-.sub-price{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold2);opacity:0;transform:translateY(6px);transition:opacity .3s .15s,transform .3s .15s}
-.hero-sub:hover .sub-price{opacity:1;transform:translateY(0)}
-.sub-cta{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);border-bottom:1px solid rgba(184,134,74,.35);padding-bottom:2px;text-decoration:none;opacity:0;transform:translateY(4px);transition:opacity .3s .2s,transform .3s .2s,gap .2s}
-.hero-sub:hover .sub-cta{opacity:1;transform:translateY(0)}
-.sub-cta:hover{gap:12px}
+.hero-sub-info{position:absolute;bottom:0;left:0;right:0;padding:22px 24px;}
+.sub-cat{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px;}
+.sub-name{font-family:var(--serif);font-size:18px;color:var(--white);line-height:1.1;margin-bottom:6px}
+.sub-price{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--gold2);margin-bottom:8px;display:block;}
+.sub-cta{display:inline-flex;align-items:center;gap:7px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--beige);background:rgba(44,26,14,.6);backdrop-filter:blur(8px);padding:7px 12px;text-decoration:none;transition:background .2s,gap .2s;width:fit-content}
+.sub-cta:hover{background:rgba(44,26,14,.85);gap:10px}
 
 /* ══ SCROLL BAND ══ */
 .scroll-band{overflow:hidden;background:var(--choco);padding:14px 0;border-top:1px solid rgba(255,255,255,.06)}
@@ -185,6 +244,39 @@ footer{background:var(--choco2);padding:60px 56px 28px;border-top:1px solid rgba
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
+/* ══ POPUP ══ */
+.popup-backdrop{position:fixed;inset:0;z-index:2000;background:rgba(44,26,14,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
+.popup-backdrop.open{opacity:1;pointer-events:all}
+.popup{background:var(--cream);max-width:880px;width:calc(100% - 48px);display:grid;grid-template-columns:1fr 1fr 1fr;transform:translateY(20px) scale(.97);transition:transform .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(44,26,14,.3)}
+.popup-backdrop.open .popup{transform:translateY(0) scale(1)}
+.popup-close{position:absolute;top:16px;right:16px;z-index:10;width:32px;height:32px;border:none;background:transparent;cursor:pointer;font-size:20px;color:var(--beige3);display:flex;align-items:center;justify-content:center;transition:color .2s}
+.popup-close:hover{color:var(--choco)}
+.pp{padding:36px 26px;display:flex;flex-direction:column;gap:14px;border-right:1px solid var(--beige2);transition:background .2s}
+.pp:last-child{border-right:none}
+.pp:hover{background:var(--beige)}
+.pp-icon{font-size:26px}.pp-tag{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.pp-title{font-family:var(--serif);font-size:19px;line-height:1.2;color:var(--choco)}
+.pp-desc{font-size:12px;color:rgba(44,26,14,.5);line-height:1.6;flex:1}
+.pp-cta{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(184,134,74,.4);padding-bottom:2px;transition:gap .2s}
+.pp:hover .pp-cta{gap:12px}
+.pp-cherche{background:var(--beige)}
+.cl{list-style:none;display:flex;flex-direction:column;gap:6px}
+.cl li{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--choco);padding:8px 10px;background:var(--cream);border:1px solid var(--beige2);cursor:pointer;transition:border-color .2s}
+.cl li:hover{border-color:var(--gold)}
+.pp-btn{padding:11px;background:var(--choco);color:var(--beige);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;text-align:center;width:100%}
+.pp-btn:hover{background:var(--choco3)}
+.pp-ia{background:var(--choco2)}
+.pp-ia .pp-tag{color:var(--gold2)}.pp-ia .pp-title{color:var(--beige)}.pp-ia .pp-desc{color:rgba(245,237,224,.5)}.pp-ia .pp-cta{color:var(--gold2);border-color:rgba(212,169,106,.4)}
+.ia-ta{background:rgba(245,237,224,.07);border:1px solid rgba(245,237,224,.15);color:var(--beige);font-family:var(--sans);font-size:12px;padding:10px;resize:none;height:76px;outline:none;width:100%;transition:border-color .2s}
+.ia-ta::placeholder{color:rgba(245,237,224,.3)}.ia-ta:focus{border-color:rgba(245,237,224,.4)}
+.ia-btn{padding:11px;background:var(--gold);color:var(--choco);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;width:100%}
+.ia-btn:hover{background:var(--gold2)}
+.cf{display:flex;flex-direction:column;gap:7px;flex:1}
+.cf input,.cf select{padding:9px 11px;border:1px solid var(--beige2);background:var(--beige);font-family:var(--sans);font-size:12px;color:var(--choco);outline:none;transition:border-color .2s}
+.cf input:focus,.cf select:focus{border-color:var(--gold)}
+.adv-chip{display:flex;align-items:center;gap:10px;padding:10px;background:var(--beige);border:1px solid var(--beige2)}
+.adv-av{width:30px;height:30px;border-radius:50%;background:var(--choco);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--beige);font-weight:600;flex-shrink:0}
+.adv-name{font-size:12px;font-weight:500;color:var(--choco)}.adv-sub{font-size:10px;color:var(--gray)}
 </style>
 </head>
 <body>
@@ -194,18 +286,92 @@ footer{background:var(--choco2);padding:60px 56px 28px;border-top:1px solid rgba
 <nav id="mainNav">
   <a href="#" class="nav-logo">Be<span>·</span>MyDesk</a>
   <ul class="nav-links">
-    <li><a href="#shopping">Produits</a></li>
-    <li><a href="#db">Design & Build</a></li>
-    <li><a href="#">Showroom</a></li>
+    <li class="nav-link-item" data-menu="products">Produits</li>
+    <li class="nav-link-item" data-menu="db">Design & Build</li>
+    <li class="nav-link-item" data-menu="showroom">Showroom</li>
   </ul>
   <div class="nav-right">
     <div class="nav-phone">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
       06 85 61 84 11
     </div>
-    <a href="https://www.be-mydesk.com" target="_blank" class="nav-cta">Visiter le site →</a>
+    <div class="nav-icons">
+      <a href="#" class="nav-icon-btn" title="Mon panier">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+        <span class="nav-icon-badge">0</span>
+      </a>
+      <a href="#" class="nav-icon-btn" title="Mon espace">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
   </div>
 </nav>
+
+<div class="mega-overlay" id="megaOverlay"></div>
+
+<!-- MEGA: PRODUITS -->
+<div class="mega-menu" id="menu-products">
+  <div class="mm-grid">
+    <div class="mm-feat">
+      <div>
+        <p style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:12px">Nouveauté 2026</p>
+        <h3>Configurateur IA BeMyDesk</h3>
+        <p style="margin-top:10px">Décrivez vos besoins — notre IA propose une sélection sur-mesure en secondes.</p>
+      </div>
+      <a href="#">Essayer le configurateur →</a>
+    </div>
+    <div class="mm-cats">
+      <a href="https://www.be-mydesk.com/3-bureau-de-travail-professionnel-design" target="_blank" class="mm-cat"><div class="mm-cat-icon">🖥️</div><div class="mm-cat-name">Bureaux</div><div class="mm-cat-n">124 réf.</div></a>
+      <a href="https://www.be-mydesk.com/15-siege-professionnel" target="_blank" class="mm-cat"><div class="mm-cat-icon">🪑</div><div class="mm-cat-name">Sièges</div><div class="mm-cat-n">98 réf.</div></a>
+      <a href="https://www.be-mydesk.com/22-rangement-de-bureau" target="_blank" class="mm-cat"><div class="mm-cat-icon">📦</div><div class="mm-cat-name">Rangement</div><div class="mm-cat-n">77 réf.</div></a>
+      <a href="https://www.be-mydesk.com/5-bureau-assis-debout" target="_blank" class="mm-cat"><div class="mm-cat-icon">⚡</div><div class="mm-cat-name">Assis-debout</div><div class="mm-cat-n">28 réf.</div></a>
+      <a href="#" class="mm-cat"><div class="mm-cat-icon">🔇</div><div class="mm-cat-name">Acoustique</div><div class="mm-cat-n">41 réf.</div></a>
+      <a href="#" class="mm-cat"><div class="mm-cat-icon">💡</div><div class="mm-cat-name">Accessoires</div><div class="mm-cat-n">63 réf.</div></a>
+      <a href="#" class="mm-cat"><div class="mm-cat-icon">🛋️</div><div class="mm-cat-name">Lounge</div><div class="mm-cat-n">35 réf.</div></a>
+      <a href="#hero" class="mm-cat" style="background:var(--choco);border-color:var(--choco)"><div class="mm-cat-icon">✨</div><div class="mm-cat-name" style="color:var(--beige)">Cider Edition</div><div class="mm-cat-n" style="color:rgba(245,237,224,.4)">Marque propre</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGA: DESIGN & BUILD -->
+<div class="mega-menu" id="menu-db">
+  <div style="margin-bottom:28px">
+    <div class="s-eyebrow">Design & Build</div>
+    <h2 style="font-family:var(--serif);font-size:28px;font-weight:400;margin-top:8px;color:var(--choco)">De la conception à la remise des clés</h2>
+  </div>
+  <div class="mm-db">
+    <a href="#db" class="mm-db-item"><div class="mm-db-icon">📐</div><div class="mm-db-name">Brief & conception</div><div class="mm-db-desc">Plans 3D, sélection mobilier, chiffrage en 5 jours.</div></a>
+    <a href="#db" class="mm-db-item"><div class="mm-db-icon">🏗️</div><div class="mm-db-name">Travaux & aménagement</div><div class="mm-db-desc">Coordination chantier, cloisons, sols, plafonds.</div></a>
+    <a href="#db" class="mm-db-item"><div class="mm-db-icon">🛋️</div><div class="mm-db-name">Mobilier sur-mesure</div><div class="mm-db-desc">Sourcing, livraison, installation clé en main.</div></a>
+    <a href="#db" class="mm-db-item"><div class="mm-db-icon">🖼️</div><div class="mm-db-name">Nos réalisations</div><div class="mm-db-desc">Fintech Paris, Boardroom La Défense, Campus Bordeaux…</div></a>
+    <a href="#" class="mm-db-item"><div class="mm-db-icon">📊</div><div class="mm-db-name">Demander un devis</div><div class="mm-db-desc">Réponse sous 48h, sans engagement.</div></a>
+    <a href="#" class="mm-db-item" style="background:var(--choco);border-color:var(--choco)"><div class="mm-db-icon">📞</div><div class="mm-db-name" style="color:var(--beige)">Parler à un expert</div><div class="mm-db-desc" style="color:rgba(245,237,224,.5)">06 85 61 84 11 — Rappel sous 4H garanti.</div></a>
+  </div>
+</div>
+
+<!-- MEGA: SHOWROOM -->
+<div class="mega-menu" id="menu-showroom">
+  <div style="margin-bottom:28px">
+    <div class="s-eyebrow">Showroom</div>
+    <h2 style="font-family:var(--serif);font-size:28px;font-weight:400;margin-top:8px;color:var(--choco)">Venez toucher, tester, configurer</h2>
+  </div>
+  <div class="mm-showroom">
+    <a href="#" class="mm-showroom-item">
+      <div class="mm-showroom-icon">🏛️</div>
+      <div class="mm-showroom-name">Showroom Paris</div>
+      <div class="mm-showroom-desc">Plus de 200 références en exposition permanente. Testez les sièges, configurez vos bench, visualisez vos espaces.</div>
+      <div class="mm-showroom-addr">📍 Paris — Sur rendez-vous</div>
+      <a href="#" style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,134,74,.4);padding-bottom:2px">Prendre rendez-vous →</a>
+    </a>
+    <a href="#" class="mm-showroom-item" style="background:var(--choco)">
+      <div class="mm-showroom-icon">📅</div>
+      <div class="mm-showroom-name" style="color:var(--beige)">Visite virtuelle</div>
+      <div class="mm-showroom-desc" style="color:rgba(245,237,224,.5)">Pas le temps de vous déplacer ? Faites une visite guidée en visio avec un conseiller dédié.</div>
+      <div class="mm-showroom-addr" style="color:var(--gold2)">⏱ 30 minutes · Disponible immédiatement</div>
+      <a href="#" style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);text-decoration:none;border-bottom:1px solid rgba(212,169,106,.4);padding-bottom:2px">Réserver une visio →</a>
+    </a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -382,6 +548,173 @@ footer{background:var(--choco2);padding:60px 56px 28px;border-top:1px solid rgba
   </div>
 </section>
 
+<!-- SHOWROOM -->
+<section id="showroom">
+  <div class="sw-header">
+    <div class="reveal">
+      <div class="s-eyebrow">Showroom</div>
+      <h2 class="sw-headline">Venez toucher,<br>tester, <em>configurer</em><br>votre bureau idéal</h2>
+    </div>
+    <div class="reveal">
+      <p class="sw-sub">Plus de 200 références en exposition permanente à Paris. Asseyez-vous dans les fauteuils, posez les mains sur les bureaux, visualisez vos espaces grandeur nature — avant de commander.</p>
+      <a href="#" class="sw-cta-inline">Prendre rendez-vous →</a>
+    </div>
+  </div>
+
+  <!-- Grille photos showroom -->
+  <div class="sw-grid reveal">
+    <!-- Grande image gauche -->
+    <div class="sw-main">
+      <svg class="sw-img" viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="800" height="460" fill="#e8ddd0"/>
+        <!-- Sol parquet -->
+        <rect y="300" width="800" height="160" fill="#c8b89a"/>
+        <line x1="0" y1="310" x2="800" y2="310" stroke="#b8a88a" stroke-width="1" opacity=".5"/>
+        <line x1="0" y1="330" x2="800" y2="330" stroke="#b8a88a" stroke-width="1" opacity=".3"/>
+        <!-- Mur fond beige chaleureux -->
+        <rect width="800" height="310" fill="#f0e8dc"/>
+        <!-- Cloison vitrée gauche -->
+        <rect x="0" y="0" width="3" height="460" fill="#c8b89a"/>
+        <rect x="3" y="0" width="100" height="460" fill="rgba(200,180,160,.2)"/>
+        <!-- Bureau gauche avec 2 postes -->
+        <rect x="60" y="200" width="280" height="70" rx="2" fill="#d4c4b0"/>
+        <rect x="60" y="195" width="280" height="8" rx="2" fill="#c4b4a0"/>
+        <!-- Écrans -->
+        <rect x="80" y="155" width="90" height="55" rx="2" fill="#2c1a0e"/>
+        <rect x="83" y="158" width="84" height="47" rx="1" fill="#1a1210"/>
+        <rect x="125" y="188" width="10" height="10" fill="#3d2510"/>
+        <rect x="220" y="148" width="90" height="55" rx="2" fill="#2c1a0e"/>
+        <rect x="223" y="151" width="84" height="47" rx="1" fill="#1a1210"/>
+        <rect x="265" y="183" width="10" height="10" fill="#3d2510"/>
+        <!-- Chaises -->
+        <ellipse cx="130" cy="285" rx="35" ry="12" fill="#888" opacity=".6"/>
+        <rect x="110" y="245" width="40" height="40" rx="3" fill="#777" opacity=".7"/>
+        <ellipse cx="260" cy="285" rx="35" ry="12" fill="#888" opacity=".6"/>
+        <rect x="240" y="245" width="40" height="40" rx="3" fill="#777" opacity=".7"/>
+        <!-- Plante grande -->
+        <rect x="360" y="180" width="12" height="120" fill="#8a7060"/>
+        <ellipse cx="366" cy="175" rx="45" ry="50" fill="#2a4a2a" opacity=".8"/>
+        <ellipse cx="350" cy="185" rx="30" ry="35" fill="#1a3a1a" opacity=".7"/>
+        <ellipse cx="385" cy="180" rx="28" ry="32" fill="#2a4a2a" opacity=".6"/>
+        <!-- Bureau droit -->
+        <rect x="440" y="200" width="260" height="70" rx="2" fill="#d4c4b0"/>
+        <rect x="440" y="195" width="260" height="8" rx="2" fill="#c4b4a0"/>
+        <rect x="460" y="152" width="90" height="55" rx="2" fill="#2c1a0e"/>
+        <rect x="463" y="155" width="84" height="47" rx="1" fill="#1a1210"/>
+        <ellipse cx="530" cy="285" rx="35" ry="12" fill="#888" opacity=".6"/>
+        <rect x="510" y="245" width="40" height="40" rx="3" fill="#777" opacity=".7"/>
+        <!-- Lumières plafond -->
+        <rect x="0" y="0" width="800" height="25" fill="#f5ede0"/>
+        <rect x="0" y="22" width="800" height="3" fill="#e8ddd0"/>
+        <circle cx="200" cy="12" r="8" fill="#fff" opacity=".9"/>
+        <circle cx="400" cy="12" r="8" fill="#fff" opacity=".9"/>
+        <circle cx="600" cy="12" r="8" fill="#fff" opacity=".9"/>
+        <!-- Panneau enseigne -->
+        <rect x="620" y="80" width="160" height="50" rx="2" fill="#2c1a0e"/>
+        <text x="700" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#f5ede0" opacity=".9">Be·MyDesk</text>
+        <text x="700" y="120" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#d4a96a" letter-spacing="3">SHOWROOM</text>
+      </svg>
+      <div class="sw-label">
+        <div class="sw-label-tag">Open space · 200 réf.</div>
+        <div class="sw-label-name">Espace principal</div>
+        <div class="sw-label-sub">Bureaux, sièges, mobilier de collaboration</div>
+      </div>
+    </div>
+
+    <!-- Photo haut droite — zone lounge -->
+    <div class="sw-side">
+      <svg class="sw-img" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="220" fill="#d4c4b0"/>
+        <rect y="140" width="400" height="80" fill="#c0a88a"/>
+        <!-- Canapé -->
+        <rect x="40" y="95" width="200" height="70" rx="8" fill="#8a6a4a"/>
+        <rect x="40" y="88" width="200" height="20" rx="6" fill="#7a5a3a"/>
+        <rect x="40" y="95" width="30" height="70" rx="4" fill="#7a5a3a"/>
+        <rect x="210" y="95" width="30" height="70" rx="4" fill="#7a5a3a"/>
+        <!-- Table basse -->
+        <rect x="100" y="150" width="120" height="40" rx="3" fill="#c8b090"/>
+        <rect x="110" y="188" width="8" height="15" fill="#a89070"/>
+        <rect x="202" y="188" width="8" height="15" fill="#a89070"/>
+        <!-- Revue -->
+        <rect x="120" y="145" width="40" height="28" rx="1" fill="#e8e0d4"/>
+        <!-- Mur fond -->
+        <rect width="400" height="100" fill="#ede0cc"/>
+        <!-- Tableau mural -->
+        <rect x="260" y="20" width="100" height="70" rx="2" fill="#2c1a0e" opacity=".8"/>
+        <rect x="265" y="25" width="90" height="60" rx="1" fill="#b8864a" opacity=".4"/>
+        <!-- Plante -->
+        <rect x="300" y="80" width="8" height="70" fill="#8a7060"/>
+        <ellipse cx="304" cy="75" rx="28" ry="32" fill="#2a4a2a" opacity=".75"/>
+        <!-- Lumières warm -->
+        <circle cx="100" cy="10" r="6" fill="#fff" opacity=".8"/>
+        <circle cx="300" cy="10" r="6" fill="#fff" opacity=".8"/>
+      </svg>
+      <div class="sw-label">
+        <div class="sw-label-tag">Espace lounge</div>
+        <div class="sw-label-name">Zone détente</div>
+      </div>
+    </div>
+
+    <!-- Photo bas droite — salle réunion -->
+    <div class="sw-side">
+      <svg class="sw-img" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="220" fill="#e0d4c4"/>
+        <rect y="150" width="400" height="70" fill="#c8b89a"/>
+        <!-- Table ovale conférence -->
+        <ellipse cx="200" cy="150" rx="160" ry="45" fill="#c8b090"/>
+        <ellipse cx="200" cy="145" rx="155" ry="40" fill="#d4bc9a"/>
+        <!-- Chaises autour -->
+        <ellipse cx="100" cy="185" rx="22" ry="8" fill="#888" opacity=".5"/>
+        <rect x="82" y="160" width="36" height="30" rx="3" fill="#777" opacity=".6"/>
+        <ellipse cx="160" cy="195" rx="22" ry="8" fill="#888" opacity=".5"/>
+        <rect x="142" y="170" width="36" height="30" rx="3" fill="#777" opacity=".6"/>
+        <ellipse cx="240" cy="195" rx="22" ry="8" fill="#888" opacity=".5"/>
+        <rect x="222" y="170" width="36" height="30" rx="3" fill="#777" opacity=".6"/>
+        <ellipse cx="300" cy="185" rx="22" ry="8" fill="#888" opacity=".5"/>
+        <rect x="282" y="160" width="36" height="30" rx="3" fill="#777" opacity=".6"/>
+        <!-- Écran mural -->
+        <rect x="0" y="30" width="400" height="5" fill="#e8e0d4"/>
+        <rect x="120" y="40" width="160" height="90" rx="3" fill="#1a1210"/>
+        <rect x="124" y="44" width="152" height="82" rx="2" fill="#0f0d0a"/>
+        <rect x="194" y="128" width="12" height="8" fill="#2c1a0e"/>
+        <!-- Fond mur texturé -->
+        <rect width="400" height="150" fill="#ede8e0"/>
+        <rect width="400" height="3" fill="#e0d8d0"/>
+        <!-- Lignes de texture verticales -->
+        <line x1="100" y1="0" x2="100" y2="150" stroke="#d8d0c8" stroke-width="1" opacity=".4"/>
+        <line x1="200" y1="0" x2="200" y2="150" stroke="#d8d0c8" stroke-width="1" opacity=".4"/>
+        <line x1="300" y1="0" x2="300" y2="150" stroke="#d8d0c8" stroke-width="1" opacity=".4"/>
+        <!-- Spot plafond -->
+        <circle cx="200" cy="12" r="7" fill="#fff" opacity=".85"/>
+        <circle cx="130" cy="12" r="5" fill="#fff" opacity=".7"/>
+        <circle cx="270" cy="12" r="5" fill="#fff" opacity=".7"/>
+      </svg>
+      <div class="sw-label">
+        <div class="sw-label-tag">Salle réunion</div>
+        <div class="sw-label-name">Rotonde & tables</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards infos pratiques -->
+  <div class="sw-info reveal">
+    <div class="sw-card">
+      <div class="sw-card-icon">🏛️</div>
+      <div class="sw-card-title">Showroom Paris</div>
+      <div class="sw-card-desc">Venez découvrir nos collections en conditions réelles. Nos conseillers vous accompagnent dans votre projet d'aménagement, du brief à la commande.</div>
+      <div class="sw-card-detail">📍 Paris — Sur rendez-vous uniquement</div>
+      <a href="#" class="sw-card-link">Réserver un créneau →</a>
+    </div>
+    <div class="sw-card" style="background:var(--choco);border-color:var(--choco2)">
+      <div class="sw-card-icon">📅</div>
+      <div class="sw-card-title" style="color:var(--beige)">Visite virtuelle visio</div>
+      <div class="sw-card-desc" style="color:rgba(245,237,224,.45)">Pas le temps de vous déplacer ? Un conseiller dédié vous fait visiter le showroom en direct et répond à toutes vos questions depuis votre bureau.</div>
+      <div class="sw-card-detail" style="color:var(--gold2)">⏱ 30 min · Disponible sous 24h</div>
+      <a href="#" class="sw-card-link" style="color:var(--gold2);border-color:rgba(212,169,106,.4)">Réserver une visio →</a>
+    </div>
+  </div>
+</section>
+
 <!-- STATS -->
 <div id="stats">
   <div class="stat-b reveal"><div class="stat-n">180+</div><div class="stat-l">Projets réalisés</div></div>
@@ -391,6 +724,43 @@ footer{background:var(--choco2);padding:60px 56px 28px;border-top:1px solid rgba
 </div>
 
 <!-- FOOTER -->
+<!-- POPUP -->
+<div class="popup-backdrop" id="popup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <div class="pp pp-cherche">
+      <div class="pp-icon">🔍</div><div class="pp-tag">Configurateur</div>
+      <h3 class="pp-title">Je cherche…</h3>
+      <ul class="cl">
+        <li>💼 Travailler</li><li>🤝 Collaborer</li>
+        <li>🔇 M'isoler / Acoustique</li><li>🏛️ Accueillir</li>
+        <li>💡 Apprendre</li><li>📦 Stocker</li>
+      </ul>
+      <button class="pp-btn">VOIR LES PRODUITS ASSOCIÉS →</button>
+    </div>
+    <div class="pp">
+      <div class="pp-icon">👤</div><div class="pp-tag">Conseil expert</div>
+      <h3 class="pp-title">J'ai un projet, je veux parler à un humain</h3>
+      <div class="cf">
+        <input type="text" placeholder="Nom & Prénom">
+        <input type="text" placeholder="Société">
+        <input type="tel" placeholder="N° de téléphone">
+        <select><option>J'ai un projet de travaux / mobilier</option><option>Je veux un devis</option><option>Je cherche des conseils</option></select>
+      </div>
+      <button class="pp-btn" style="background:var(--choco)">ÊTRE RAPPELÉ SOUS 4H →</button>
+      <div class="adv-chip"><div class="adv-av">M</div><div><div class="adv-name">Malick — Conseiller dédié</div><div class="adv-sub">Rappel sous 4H garanti</div></div></div>
+    </div>
+    <div class="pp pp-ia">
+      <div class="pp-icon">✨</div><div class="pp-tag">IA</div>
+      <h3 class="pp-title">Indiquez vos besoins, notre IA vous aide</h3>
+      <p class="pp-desc">Décrivez votre projet — surface, équipe, budget — notre IA génère une sélection sur-mesure.</p>
+      <textarea class="ia-ta" placeholder="Ex : 12 postes open space, budget ~15k€…"></textarea>
+      <button class="ia-btn">LANCER L'ANALYSE IA →</button>
+      <a href="#" class="pp-cta">En savoir plus →</a>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="ft-grid">
     <div><div class="ft-logo">Be<span>·</span>MyDesk</div><p class="ft-tagline">Mobilier de bureau professionnel & aménagement clé en main pour les entreprises françaises.</p></div>
@@ -411,6 +781,24 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>60));
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// Mega menu hover
+const navItems=document.querySelectorAll('.nav-link-item[data-menu]');
+const megaMenus=document.querySelectorAll('.mega-menu');
+const megaOverlay=document.getElementById('megaOverlay');
+function closeMenus(){megaMenus.forEach(m=>m.classList.remove('open'));navItems.forEach(l=>l.classList.remove('active'));megaOverlay.classList.remove('open');}
+navItems.forEach(item=>{
+  item.addEventListener('mouseenter',()=>{closeMenus();document.getElementById('menu-'+item.dataset.menu).classList.add('open');item.classList.add('active');megaOverlay.classList.add('open');});
+  item.addEventListener('mouseleave',closeMenus);
+});
+megaOverlay.addEventListener('click',closeMenus);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenus();closePopup();}});
+// Popup
+let popupTimer=null;
+function openPopup(){if(popupTimer){clearTimeout(popupTimer);popupTimer=null;}document.getElementById('popup').classList.add('open');}
+function closePopup(){document.getElementById('popup').classList.remove('open');popupTimer=setTimeout(openPopup,2*60*1000);}
+document.getElementById('popup').addEventListener('click',e=>{if(e.target===document.getElementById('popup'))closePopup();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+setTimeout(openPopup,3000);
 </script>
 </body>
 </html>
